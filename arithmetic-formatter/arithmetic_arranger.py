@@ -30,7 +30,10 @@ def arithmetic_arranger(problems, show_answers=False):
             fnlist.append(x[0])
             selist.append(x[1]+ " " +x[2])
             lineslist.append("-" *(len(selist[count]))) #and - to the lineslist according to len of selist
-            answer = int(x[0]) + int(x[1] + x[2])
+            try:
+                answer = int(x[0]) + int(x[1] + x[2])
+            except TypeError and ValueError:
+                return 'Error: Numbers must only contain digits.'
             answerlist.append(answer)
             count += 1
 
@@ -44,4 +47,4 @@ def arithmetic_arranger(problems, show_answers=False):
 
     return problems
 
-print(f'\n{arithmetic_arranger(["3 + 698", "3801 + 2000", "45 + 43", "123 + 49"],True)}')
+print(f'\n{arithmetic_arranger(["3 + 6p8", "3801 + 2000", "45 + 43", "123 + 49"],True)}')
