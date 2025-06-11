@@ -1,13 +1,7 @@
-def printscreen(list):
-    i = 0
-
-    while i < len(list):
-        if i+2 > len(list):
-            print(f"{list[i]:>6}")
-        else:
-            print(f"{list[i]:>6}", end = '    ')
-        i += 1
-
+def printscreen(data_list):
+    print_line = "    ".join([f"{item:>6}" for item in data_list])
+    print(print_line)
+    
 def arithmetic_arranger(problems, show_answers=False):
     if len(problems) > 4:
         return 'Error: Too many problems.'
@@ -38,7 +32,7 @@ def arithmetic_arranger(problems, show_answers=False):
                 return 'Error: Numbers must only contain digits.'
             answerlist.append(answer)
             count += 1
-
+  
     printscreen(fnlist)
     printscreen(selist)
     printscreen(lineslist)
