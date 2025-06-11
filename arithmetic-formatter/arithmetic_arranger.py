@@ -26,6 +26,8 @@ def arithmetic_arranger(problems, show_answers=False):
         else:
             #split each problem into 3 sections
             x =prob.split()
+            if len(x[0]) and len(x[2]) > 4:
+                return 'Error: Numbers cannot be more than four digits.'
             #and split one into each line
             fnlist.append(x[0])
             selist.append(x[1]+ " " +x[2])
@@ -47,4 +49,4 @@ def arithmetic_arranger(problems, show_answers=False):
 
     return problems
 
-print(f'\n{arithmetic_arranger(["3 + 6p8", "3801 + 2000", "45 + 43", "123 + 49"],True)}')
+print(f'\n{arithmetic_arranger(["3 + 608", "3801 + 2000", "45 + 43", "123 + 49"],True)}')
