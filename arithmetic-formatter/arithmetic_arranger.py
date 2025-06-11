@@ -9,6 +9,8 @@ def printscreen(list):
         i += 1
 
 def arithmetic_arranger(problems, show_answers=False):
+    if len(problems) > 4:
+        return 'Error: Too many problems.'
     fnlist = [] #first line
     selist = [] #second line
     lineslist = [] #third line
