@@ -3,7 +3,6 @@ def add_time(start, duration, days_start = ''):
     start_time = start.split(':')
     duration_time = duration.split(':')
 
-    days_list = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
     show_day = ''
 
     #check and do some change whever start is PM or AM
@@ -55,34 +54,24 @@ def add_time(start, duration, days_start = ''):
     elif day_move >1 :
         show_day_move = f' ({day_move} days later)'
     
+    #helper function to detect which day to start and end then return to print
+    def _find_new_day(days_start, day_move):
+        days_list = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        try:
+            start_day_index = days_list.index(days_start.capitalize())
+        except ValueError:
+            return ""
+        new_day_index = (start_day_index + day_move) % 7
 
-    show_day = ''
-    days = 0
-    while days < 7:
-        if days_start.lower() == (days_list[days]).lower():
-            show_day = f', {days_list[days]}'
-            if day_move != 0:
-                if (days+day_move)>6:
-                    print('test')
-                    if day_move < 7:
-                        new_days =(days+day_move)-7
-                        show_day = f', {days_list[new_days]}'
-                    elif day_move >= 7:
-                        new_days = (days+day_move)-(7*((day_move+days)//7))
-                        show_day = f', {days_list[new_days]}' 
-                else:
-                    new_days = days+day_move
-                    show_day = f', {days_list[new_days]}'
-        days += 1
+        return f', {days_list[new_day_index]}'
 
-    #put everything into new_time 
-    new_time = str(final_hours) + ':' + str(final_minutes) + ' ' + time_period + show_day + show_day_move
+
+    new_time = str(final_hours) + ':' + str(final_minutes) + ' ' + time_period + _find_new_day(days_start,day_move) + show_day_move
   
 
     return new_time
 
 
-print(add_time('8:16 PM', '466:02', 'tuesday'))
-
+print(add_time('3:30 PM', '2:12'))
 
 
