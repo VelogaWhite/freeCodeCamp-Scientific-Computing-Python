@@ -3,7 +3,7 @@ def add_time(start, duration, days_start = ''):
     start_time = start.split(':')
     duration_time = duration.split(':')
 
-    show_day = ''
+ 
 
     #check and do some change whever start is PM or AM
     if 'PM' in start_time[1]:
@@ -34,7 +34,6 @@ def add_time(start, duration, days_start = ''):
     if(final_hours) > 24:
         day_move = final_hours//24
         final_hours = final_hours-(24*day_move)
-        print('Day_move =',day_move)
 
     #PM or AM and 12 case
     if (final_hours-12) >0 :
